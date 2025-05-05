@@ -1,6 +1,6 @@
 # This is a weight converter that I made for a school project
-## It can convert
--Kg
+## It can convert:
+Kg
 Lbs
 Viss
 Tons
