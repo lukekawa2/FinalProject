@@ -4,16 +4,16 @@ import java.util.Scanner;
 
 public class WeightConversion {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         boolean keepRunning = true;
 
-    while (keepRunning) {
-    weightConverter(Scanner scanner);
+        while (keepRunning) {
+            weightConverter(scan);
+        }
     }
-
-        public static void weightConverter(Scanner scanner) {
+        public static void weightConverter(Scanner scan) {
             System.out.println("How many weights do you want to enter?");
-            int count = Main.scan.nextInt();
+            int count = scan.nextInt();
             // Make it so a person can type in a list of weights all at once instead of typing in each weight one by one
             List<Integer> weights = new ArrayList<>();
             {
@@ -28,7 +28,7 @@ public class WeightConversion {
                         System.out.println("Enter weight" + (i + 1) + ": ");
                         weight = scan.nextInt();
                     } else {
-                        conversionMath(int weight);
+                        conversionMath(weight, scan);
                         return;
 
                     }
@@ -36,7 +36,7 @@ public class WeightConversion {
             }
         }
 
-        private static void conversionMath (int weight){
+        private static void conversionMath (int weight, Scanner scan){
             final String[] weightUnits = {"KG,LBS,Viss"};
             System.out.println("Select a choice from the list" + weightUnits);
             // This is converts the weight
@@ -78,12 +78,12 @@ public class WeightConversion {
             System.out.println("Would you like to convert to Tons?(y/n)");
             String getBigger = scan.nextLine();
             if (getBigger.equalsIgnoreCase("yes")) {
-                getTons();
+                getTons(scan);
             } else {
             }
         }
         //This allows someone to make the weight into tons which could be used for shipping on a freighter or another method business may use
-        public static void getTons() {
+        public static void getTons(Scanner scan) {
             System.out.println("What is the weight?");
             int weight = scan.nextInt();
             System.out.println("What is the unit of weight?");
@@ -101,4 +101,3 @@ public class WeightConversion {
 
 
     }
-}
