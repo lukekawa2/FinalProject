@@ -2,18 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class WeightConversion {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+public class WeightConversion extends Conversion {
+
+    public WeightConversion(int startValue, String startType, String newType)
+    {
+        Scanner scan = new Scanner(System.in);
         boolean keepRunning = true;
 
-    while (keepRunning) {
-    weightConverter(Scanner scanner);
+        while (keepRunning) {
+            weightConverter(scan);
+        }
     }
-
-        public static void weightConverter(Scanner scanner) {
+        public static void weightConverter(Scanner scan) {
             System.out.println("How many weights do you want to enter?");
-            int count = Main.scan.nextInt();
+            int count = scan.nextInt();
             // Make it so a person can type in a list of weights all at once instead of typing in each weight one by one
             List<Integer> weights = new ArrayList<>();
             {
@@ -28,7 +30,7 @@ public class WeightConversion {
                         System.out.println("Enter weight" + (i + 1) + ": ");
                         weight = scan.nextInt();
                     } else {
-                        conversionMath(int weight);
+                        conversionMath(weight, scan);
                         return;
 
                     }
@@ -36,8 +38,8 @@ public class WeightConversion {
             }
         }
 
-        private static void conversionMath (int weight){
-            final String[] weightUnits = {"KG,LBS,Viss"};
+        private static void conversionMath (int weight, Scanner scan){
+            final String[] weightUnits = {"KG,LBS,Tons"};
             System.out.println("Select a choice from the list" + weightUnits);
             // This is converts the weight
             System.out.println(weightUnits);
@@ -64,41 +66,21 @@ public class WeightConversion {
                 }
 
             }
-            if (weightUnits.equals("Viss")) {
+            if (weightUnits.equals("Tons")) {
                 System.out.println("What would you like to convert to? (KG or LBS)");
                 String conversionChoice = scan.nextLine();
                 if (conversionChoice.toLowerCase().startsWith("k")) {
-                    int newWeight = (int) (weight * 1.6);
+                    int newWeight = (int) (weight /1000);
                     System.out.println("Weight in KG is:" + newWeight);
                 } else {
-                    int newWeight = (int) (weight * 3.527);
+                    int newWeight = (int) (weight /2000);
                     System.out.println("Weight in LBS is:" + newWeight);
                 }
             }
-            System.out.println("Would you like to convert to Tons?(y/n)");
-            String getBigger = scan.nextLine();
-            if (getBigger.equalsIgnoreCase("yes")) {
-                getTons();
-            } else {
-            }
+
         }
-        //This allows someone to make the weight into tons which could be used for shipping on a freighter or another method business may use
-        public static void getTons() {
-            System.out.println("What is the weight?");
-            int weight = scan.nextInt();
-            System.out.println("What is the unit of weight?");
-            String unit = scan.nextLine();
-            if (unit.equalsIgnoreCase("kg")) {
-                int tonsWeight;
-                tonsWeight = (int) (weight / 1000);
-            }
-            if (unit.equalsIgnoreCase("lbs")) {
-                int tonsWeight;
-                tonsWeight = (int) (weight / 2000);
-            }
-        }
+
 
 
 
     }
-}
