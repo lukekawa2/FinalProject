@@ -29,7 +29,7 @@ public class Main {
                     distanceConverter();
                 }
                 if (choice==2){
-                    weightConverter();
+                    WeightConversion.weightConverter(scan);
                 }
                 if (choice==3){
                     moneyConverter();
@@ -46,6 +46,7 @@ public class Main {
     private static void distanceConverter() {
         System.out.println("Replace with partner's method");
     }
+
 
 
 
