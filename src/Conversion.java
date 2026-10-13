@@ -1,10 +1,10 @@
 public abstract class Conversion {
-    protected int startValue;
+    protected double startValue;
     protected String startType;
     protected String newType;
-    protected int newValue;
+    protected double newValue;
 
-    public Conversion(int startValue, String startType, String newType){
+    public Conversion(double startValue, String startType, String newType){
         this.startValue = startValue;
         this.startType = startType;
         this.newType = newType;
@@ -13,11 +13,11 @@ public abstract class Conversion {
     public double getStartValue(){return startValue;}
     public String getStartType(){return startType;}
     public String getNewType(){ return newType;}
-    public int getNewValue(){return newValue;}
+    public double getNewValue(){return newValue;}
 
-    public void setStartValue(int) {this.startValue = v;}
-    public void setStartType(String startType) {this.startType = t;}
-    public void setNewType(String newType) {this.newType = t;}
+    public void setStartValue(double v) {this.startValue = v;}
+    public void setStartType(String t) {this.startType = t;}
+    public void setNewType(String n) {this.newType = n;}
 
 
     public abstract void convert();
