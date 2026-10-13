@@ -1,10 +1,15 @@
 public class WeightConversion extends Conversion {
 
-    public WeightConversion(int startValue, String startType, String newType) {
+    public WeightConversion(double startValue, String startType, String newType) {
         super(startValue, startType, newType);
     }
-
+    //
     public void convert() {
+        //to prevent users from trying to convert to the same type, bc I'm pretty sure that would break the code
+        if (startType.equalsIgnoreCase(newType)){
+            System.out.println("Can't convert to same type, please select a different type to convert to");
+        }
+
         switch (startType.toLowerCase()) {
             case "kg":
                 if (newType.equalsIgnoreCase("lb"))
