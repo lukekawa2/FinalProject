@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 
 public class Main {
 
@@ -30,19 +32,23 @@ public class Main {
                         \t3. Money Converter
                         \t4. Read From External File
                         """);
-                choice = IO.readln(choice);
+                choice = Integer.parseInt(IO.readln());
                 IO.readln();
-                if (choice <= 4 && choice >= 1) {
+                if (choice >= 1 && choice <= 4) {
                     System.out.println("Please choose from the listed options");
                     switch (choice) {
                         case 1:
                             distanceConverter();
+                            break;
                         case 2:
                             weightConverter();
+                            break;
                         case 3:
                             moneyConverter();
+                            break;
                         case 4:
                             fileHandler();
+                            break;
                     }
                 }
             }
@@ -52,11 +58,18 @@ public class Main {
         private static void distanceConverter () {
             System.out.println("What is your start value?");
             double startValue;
-            startValue = IO.readln(startValue);
+            startValue = Double.parseDouble(IO.readln());
 
             System.out.println("Is start type Miles or KM?");
             String startType ="";
             startType = IO.readln(startType);
+
+            String newType;
+            if(startType.equalsIgnoreCase("Miles")){
+                newType = "KM";
+            } else {
+                newType = "Miles";
+            }
 
             DistanceConversion dc = new DistanceConversion(startValue, startType);
             dc.convert();
@@ -65,7 +78,8 @@ public class Main {
 
         private static void weightConverter () {
             System.out.println("What is your start value?");
-            double startValue = IO.readln(startValue);
+            double startValue;
+            startValue = Double.parseDouble(IO.readln());
 
             System.out.println("Is this in LBS, KGS, or Tons?");
             String startType = "";
@@ -81,7 +95,8 @@ public class Main {
 
         private static void moneyConverter () {
             System.out.println("What is your start value?");
-            double startValue = IO.readln(startValue);
+            double startValue;
+            startValue = Double.parseDouble(IO.readln());
 
             System.out.println("Is this in USD, British Pounds, or Euros?");
             String startType = "";
