@@ -25,17 +25,20 @@ public class Main {
         private static void choiceSelection () {
             int choice = 0;
             while (true) {
-                System.out.println("""
+                IO.println("""
                         Hello which option would you like to select?
                         \t1. Distance Converter
                         \t2. Weight Converter
                         \t3. Money Converter
                         \t4. Read From External File
                         """);
-                choice = Integer.parseInt(IO.readln());
-                IO.readln();
-                if (choice >= 1 && choice <= 4) {
-                    System.out.println("Please choose from the listed options");
+                String input = IO.readln();
+                if(input.isBlank()) {
+                    continue;
+                }
+                choice = Integer.parseInt(input);
+                if ((choice >= 1 && choice <= 4)) {
+                    IO.println("Please choose from the listed options");
                     switch (choice) {
                         case 1:
                             distanceConverter();
@@ -50,6 +53,8 @@ public class Main {
                             fileHandler();
                             break;
                     }
+                    IO.println("Press enter to return to selection menu");
+                    IO.readln();
                 }
             }
 
@@ -73,6 +78,9 @@ public class Main {
 
             DistanceConversion dc = new DistanceConversion(startValue, startType);
             dc.convert();
+            double result = dc.convert();
+
+            IO.println(startValue + " " + startType + " " + "=" + " " +  result + " " + newType);
 
         }
 
@@ -91,6 +99,9 @@ public class Main {
 
             WeightConversion wc = new WeightConversion(startValue, startType, newType);
             wc.convert();
+            double result = wc.convert();
+
+            IO.println(startValue + " " + startType + " " + "=" + " " + result + " " + newType);
         }
 
         private static void moneyConverter () {
@@ -98,16 +109,20 @@ public class Main {
             double startValue;
             startValue = Double.parseDouble(IO.readln());
 
-            System.out.println("Is this in USD, British Pounds, or Euros?");
+            System.out.println("Is this in USD, Pounds, or Euros?");
             String startType = "";
             startType = IO.readln(startType);
 
-            System.out.println("Convert to USD,  British Pounds, or Euros?");
+            System.out.println("Convert to USD, Pounds, or Euros?");
             String newType = "";
             newType = IO.readln(newType);
 
             MoneyConversion mc = new MoneyConversion(startValue, startType, newType);
             mc.convert();
+
+            double newValue = mc.convert();
+
+            IO.println(startValue + " " + startType + " " + "=" + " " + newValue + " " + newType);
 
         }
         private static void fileHandler() {
