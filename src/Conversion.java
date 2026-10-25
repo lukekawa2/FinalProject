@@ -4,6 +4,7 @@ public abstract class Conversion {
     protected String newType;
     protected double newValue;
 
+
     public Conversion(double startValue, String startType, String newType){
         this.startValue = startValue;
         this.startType = startType;
@@ -20,5 +21,5 @@ public abstract class Conversion {
     public void setNewType(String n) {this.newType = n;}
 
 
-    public abstract void convert();
+    public abstract double convert();
 }
